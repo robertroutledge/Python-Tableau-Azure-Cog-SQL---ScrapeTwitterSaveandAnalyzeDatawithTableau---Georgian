@@ -1,0 +1,46 @@
+*********************************************************
+***************BDAT 1002 : Big Data Systems**************
+*********************************************************
+		 Sqoop - Hive and Exports
+*********************************************************
+
+## EXPORT ##
+-- Create another table called stocks_sqoop
+-- exactly same table as with stocks table, only difference is we won't populate it with data
+
+CREATE TABLE stocks_sqoop(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+symbol VARCHAR(64) NOT NULL,
+name VARCHAR(64) NOT NULL,
+trade_date DATE,
+close_price DECIMAL(10,2),
+volume INT,
+updated_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+hadoop fs -ls /BDAT1002/sqoop/stocks_modified/merged
+
+-- we are specifying the lcoation of mysql and table name as ususal
+-- We want to populate this table with information from the location mentioned in --export-dir
+
+sqoop export --connect jdbc:mysql://localhost/stocks_db --username root --password cloudera --table stocks_sqoop --export-dir /BDAT1002/sqoop/stocks_modified/merged
+
+-- in mysql shell, make sure the table exists and has values
+
+mysql> SELECT * FROM stocks_sqoop;
+
+## HIVE ##
+
+-- we are going to create a hive table with the same structure as a table in mysql
+-- then populate with data
+
+-- Here is the sqoop command
+-- It is the same as the usual command except with two additional options, hive-table and hive-import
+-- hive-table option specifies the database and table we want to import to
+-- hive-import tells sqoop to use the structure of mysql for the hive table
+-- The target directory is first ued to import the table from mysql to HDFS 
+-- Then the data is moved from HDFS to the hive warehouse 
+sqoop import --connect jdbc:mysql://localhost/stocks_db --username root --password cloudera --table stocks --target-dir /BDAT1002/sqoop/hive  -m 1 --hive-import --hive-table stocks_db.stocks_sqoop
+
+
+hive> DESCRIBE FORMATTED stocks_sqoop;
+

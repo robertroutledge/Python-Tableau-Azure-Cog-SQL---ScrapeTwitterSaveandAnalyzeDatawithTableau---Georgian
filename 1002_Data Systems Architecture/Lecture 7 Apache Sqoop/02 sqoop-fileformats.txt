@@ -1,0 +1,81 @@
+*********************************************************
+***************BDAT 1002 : Big Data Systems**************
+*********************************************************
+		   Sqoop - File Formats
+*********************************************************
+
+
+## IMPORT WITH $CONDITIONS ##
+
+--Data boundary using a different column
+
+sqoop import --connect jdbc:mysql://localhost/stocks_db --username root --password cloudera --table stocks --split-by volume --target-dir /BDAT1002/sqoop/stocks_conds
+
+hadoop fs -ls /BDAT1002/sqoop/stocks_conds
+
+
+--- create dividends table
+
+CREATE TABLE dividends (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+symbol VARCHAR(64) NOT NULL,
+dividend_date DATE,
+dividend_amount DECIMAL(10,2));
+
+INSERT INTO dividends 
+(symbol, dividend_date, dividend_amount)
+VALUES
+('AMGN', '2015-11-11', 0.28);
+
+INSERT INTO dividends 
+(symbol, dividend_date, dividend_amount)
+VALUES
+('SGI', '2015-11-11', 0.30);
+
+INSERT INTO dividends
+(symbol, dividend_date, dividend_amount)
+VALUES
+('INTC', '2015-11-11', 0.30);
+
+INSERT INTO dividends
+(symbol, dividend_date, dividend_amount)
+VALUES
+('SBUX', '2018-11-11', 0.30);
+-- Make sure the table has data
+
+SELECT * FROM dividends
+
+--Custom query import with $CONDITIONS
+
+sqoop import --connect jdbc:mysql://localhost/stocks_db --username root --password cloudera --query 'SELECT a.id, a.name, a.trade_date, a.volume, b.dividend_amount FROM stocks a INNER JOIN dividends b ON a.symbol = b.symbol WHERE a.id > 2 and $CONDITIONS'  --split-by a.volume --target-dir /BDAT1002/sqoop/stocks_join_conds
+
+-- Notice that only two files actually have values
+
+hadoop fs -ls /BDAT1002/sqoop/stocks_join_conds
+hadoop fs -cat /BDAT1002/sqoop/stocks_join_conds/part-m-00000
+hadoop fs -cat /BDAT1002/sqoop/stocks_join_conds/part-m-00001
+hadoop fs -cat /BDAT1002/sqoop/stocks_join_conds/part-m-00002
+
+## COMPRESSION ##
+
+sqoop import --connect jdbc:mysql://localhost/stocks_db --username root --password cloudera --table stocks --compress -m 2 --target-dir /BDAT1002/sqoop/stocks_comp
+
+hadoop fs -ls /BDAT1002/sqoop/stocks_comp
+
+-- If you try to open a compressed file, it will not be in a readable format
+
+hadoop fs -cat /BDAT1002/sqoop/stocks_comp/part-m-00000.gz
+
+## SEQUENCE FILE ##
+
+sqoop import --connect jdbc:mysql://localhost/stocks_db --username root --password cloudera --table stocks --as-sequencefile -m 2 --target-dir /BDAT1002/sqoop/stocks_seq
+
+hadoop fs -ls /BDAT1002/sqoop/stocks_seq
+hadoop fs -cat /BDAT1002/sqoop/stocks_seq/part-m-00000
+
+## AVRO ##
+
+sqoop import --connect jdbc:mysql://localhost/stocks_db --username root --password cloudera --table stocks --as-avrodatafile -m 2 --target-dir /BDAT1002/sqoop/stocks_avro
+
+hadoop fs -ls /BDAT1002/sqoop/stocks_avro
+hadoop fs -cat /BDAT1002/sqoop/stocks_avro/part-m-00000.avro

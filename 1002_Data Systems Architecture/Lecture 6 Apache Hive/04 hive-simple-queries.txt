@@ -1,0 +1,59 @@
+*********************************************************
+***************BDAT 1002 : Big Data Systems**************
+                      Saber Amini
+               Hive - HiveQL Simple Queries
+*********************************************************
+*********************************************************
+### STANDARD SELECTS ###
+
+hive> SELECT * FROM stocks
+WHERE symbol = 'KES';
+
+hive> SELECT * FROM stocks
+WHERE symbol IN ('KES', 'K3B');
+
+
+hive> SELECT * FROM stocks
+WHERE exch LIKE 'ABC%' AND symbol LIKE 'K%K'
+LIMIT 10;
+
+hive> SELECT * FROM stocks
+WHERE exch LIKE 'ABC%' AND symbol RLIKE 'K.K'
+LIMIT 10;
+
+
+### SELECT WITH CASE STATEMENT ###
+
+hive> SELECT symbol, price_open, price_close, volume,
+CASE
+ WHEN volume < 20000 THEN 'low'
+ WHEN volume >= 20000 AND volume < 40000 THEN 'middle'
+ WHEN volume >= 40000 AND volume < 60000 THEN 'high'
+ ELSE 'very high'
+END AS volume_level 
+FROM stocks
+WHERE symbol = 'KES'
+LIMIT 10;
+
+### DISTINCT & LIMIT ###
+
+hive> SELECT DISTINCT exch, symbol FROM stocks;
+
+hive> SELECT * FROM stocks LIMIT 10;
+
+### GROUP BY ###
+
+hive> SELECT year(ymd), symbol, avg(volume) FROM stocks
+GROUP BY year(ymd), symbol;
+
+### GROUP BY & HAVING ###
+
+hive> SELECT year(ymd), symbol, avg(volume) FROM stocks
+GROUP BY year(ymd), symbol
+HAVING avg(volume) > 400000;
+
+hive> INSERT OVERWRITE LOCAL DIRECTORY '/home/clouder/hive'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+SELECT year(ymd), symbol, avg(volume) FROM stocks
+GROUP BY year(ymd), symbol
+HAVING avg(volume) > 400000;

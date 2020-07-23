@@ -1,0 +1,88 @@
+## Create & Describe Topic ##
+
+-- following command should be executed under the Confluent directory
+-- Creating a topic first
+-- run this command from one of the servers
+-- inside the Confluent directory type:
+
+bin/kafka-topics --create --zookeeper localhost:2181 --partitions 1 --replication-factor 1 --topic BDAT1002-console-topic
+
+-- Need to specify where zookeper is running
+-- partitions is the number of partitions you want to create (you can have more than one partition per nod)
+-- replication factor is set to 1 since we have one node (but usually 3 for replication factor)
+
+
+-- Now run a describe command to get more details about the topic
+
+bin/kafka-topics --describe --zookeeper localhost:2181 --topic BDAT1002-console-topic
+
+-- Should see # of partitions, leader, Isr's --> not very exciting when you have one node
+
+## Start Producer & Consumer ##
+
+-- Kafka comes out of the box with a vanilla producer and consumer, it's great way for us to use to see the concepts we learned
+-- We will start a consumer and producer to send and receive messages
+
+-- start producer first
+-- need a list of few brokers (not all are necessarily)
+-- need to give topic name where producer will send message
+
+bin/kafka-console-producer --broker-list localhost:9092 --topic BDAT1002-console-topic
+
+You should get a a bigger than sing (>) in the console that allows you to send messages but before we do that, start the consumer
+
+-- Starting consumer, same as producer for parameters
+
+bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic BDAT1002-console-topic
+
+-- The screen will just be blank indicating that the consumer is just waiting for messages
+-- Play around, produce some messages (in producer and see what happens in your consumer)
+
+-- Now start another consumer and produce some messages again
+
+bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic BDAT1002-console-topic
+
+-- You will notice that the new consumer will only consume new messages
+-- If you want to consume messages from the beginning need to set the following parameter (start new consumer)
+
+bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic BDAT1002-console-topic --from-beginning
+
+-- send some messages, you should see newest consumer shows all messages
+-- This also proves that messages are not deleted by Kafka (kept for 7 days by default)
+
+## Consumer Group ##
+
+-- To distribute the laod, we need to designate consumers as part of a group
+-- First kill all the consumers by doing Cntrl-C for each of the consumers
+
+-- Starting a consumer as part of a group is very simple, we just set the flag --consumer-property group.id= consumerGroupName
+
+bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic BDAT1002-console-topic --from-beginning --consumer-property group.id=console-consumer-group
+
+-- should see all messages from producer consumed by the above consumer
+
+-- Now start another consumer in same group
+
+bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic BDAT1002-console-topic --from-beginning --consumer-property group.id=console-consumer-group
+
+-- No messages, why?
+
+-- Type more messages, what happens?
+
+## Increase Partitions ##
+
+-- to increase amount of data we can process, we need to increase the number of partitions 
+
+bin/kafka-topics --alter --zookeeper localhost:2181 --topic BDAT1002-console-topic --partitions 3
+
+-- can do a describe to see the number of partitions
+
+bin/kafka-topics --describe --zookeeper localhost:2181 --topic BDAT1002-console-topic
+
+-- Now if you produce more messages, you will see that some will go to one consumer, and others to another
+
+## Check parition assignment & Offsets ##
+
+-- check which consumer is running which partition
+
+bin/kafka-run-class kafka.admin.ConsumerGroupCommand --bootstrap-server localhost:9092 --describe --group console-consumer-group

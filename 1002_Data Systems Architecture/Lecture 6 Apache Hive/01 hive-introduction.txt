@@ -1,0 +1,42 @@
+*********************************************************
+***************BDAT 1002 : Big Data Systems**************
+                      Saber Amini
+                 Hive - Hive Introduction
+*********************************************************
+
+-- First Create a directory called hive under your BDAT1002 folder
+*** REMEMBER this is the folder in HDFS NOT in linux ***
+
+[cloudera@quickstart ~]$ hadoop fs -mkdir /BDAT1002/hive
+
+-- Put the stocks dataset into the new directory
+-- Here I am assuming the stocks dataset is in the Downloads folder
+
+
+[cloudera@quickstart ~]$ hadoop fs -copyFromLocal /home/cloudera/Downloads/stocks /BDAT1002/hive/stocks
+
+-- Start the hive shell by typing hive in the terminal and pressing enter
+
+
+[cloudera@quickstart ~]$ hive
+
+
+
+hive> CREATE DATABASE stocks_db;
+
+hive> USE stocks_db;
+
+hive> CREATE EXTERNAL TABLE IF NOT EXISTS stocks (
+exch STRING,
+symbol STRING,
+ymd STRING,
+price_open FLOAT,
+price_high FLOAT,
+price_low FLOAT,
+price_close FLOAT,
+volume INT,
+price_adj_close FLOAT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+LOCATION '/BDAT1002/hive/';
+
+hive> SELECT * FROM stocks LIMIT 100;

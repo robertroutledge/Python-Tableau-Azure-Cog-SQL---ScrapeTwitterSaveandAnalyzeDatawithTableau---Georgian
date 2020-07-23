@@ -1,0 +1,120 @@
+### JAVA INSTALATION ###
+
+--Untar JDK
+
+tar -xvf jdk-8u191-linux-x64.tar.gz
+
+--Move jdk to /usr/lib/jvm
+
+sudo mkdir -p /usr/lib/jvm
+sudo mv ./jdk1.8.0_191 /usr/lib/jvm/
+
+
+
+--Set JAVA_HOME (on all nodes) in /etc/environment
+-- open the following file
+
+sudo gedit /etc/environment
+
+-- put at the end of the file:
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_191
+
+-- close the edit and in the terminal type
+
+source /etc/environment
+
+
+-- Create alternatives
+-- we'll use the update-alternatives command to point all the java executables under usr/bin to point to the new JDK we just uncompressed
+
+sudo update-alternatives --install "/usr/bin/java" java "/usr/lib/jvm/jdk1.8.0_201/bin/java" 1
+sudo update-alternatives --install "/usr/bin/javac" javac "/usr/lib/jvm/jdk1.8.0_201/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/javaws" javaws "/usr/lib/jvm/jdk1.8.0_201/bin/javaws" 1
+
+
+
+## ZOOKEEPER SETUP ##
+
+--Download Zookeeper from Apache website
+-- Note: the following mirror may have changed, use what is available now.
+
+http://httpd-mirror.sergal.org/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
+
+--untar
+
+tar -xzf zookeeper-3.4.10.tar.gz
+
+
+--Configure zoo.cfg	
+
+cp zoo_sample.cfg zoo.cfg
+
+sudo gedit zoo.cfg &
+
+-- make sure you have at the end of the file: server.0=127.0.0.1:2888:3888
+-- Change data directory to /var/zookeeper
+
+--Create Zookeeper directory
+
+sudo mkdir /var/zookeeper
+
+-- Changing permission to make sure cloudera is owner
+
+sudo chown cloudera:cloudera /var/zookeeper
+
+-- Create myid
+-- Conents should match server in zoo.cfg
+
+sudo gedit /var/zookeeper/myid &
+
+
+-- Start Zookeeper
+-- Change to Zookeeper directory and then
+
+bin/zkServer.sh start
+
+
+## KAFKA SETUP ##
+
+-- Download Kafka distribution from Confluent
+
+-- kind of like cloudera for Hadoop
+-- Former engineers from LinkedIn
+
+--untar
+
+tar -xzf confluent-oss-4.1.1-2.11.tar.gz
+
+-- Configuration
+-- change to Confluent directory and change the following files
+
+sudo gedit etc/kafka/server.properties
+
+-- Make sure that you broker.id = 0  (should match server ID)
+-- make sure you have zookeeper.connect = localhost:2181  (host name and ports)
+
+
+sudo gedit etc/kafka/zookeeper.properties
+
+-- Make sure dataDir = /var/zookeeper
+
+
+-- Start Kafka with log files to make sure that it is running property
+
+bin/kafka-server-start etc/kafka/server.properties
+
+-- Make sure you don't get any errors (server doesn't shut down)
+-- If it does shut down, try to figure out what is wrong
+
+-- Start Kafka broker without log-files
+-- lots of log files, dumping it to the abiss
+-- nohup allows you to run the service in background
+
+nohup bin/kafka-server-start etc/kafka/server.properties > /dev/null 2>&1 &
+
+-- check out logs to make sure there is no errors (under confluence directory)
+
+--Stop Kafka
+
+bin/kafka-server-stop

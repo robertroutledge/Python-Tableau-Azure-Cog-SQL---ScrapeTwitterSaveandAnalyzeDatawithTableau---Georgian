@@ -1,0 +1,9 @@
+********************************************
+********BDAT 1002 : Big Data Systems********
+********************************************
+            Flume - Replication
+********************************************
+
+##To run simple flume agent to demonstrate replication##
+
+flume-ng agent --conf /home/cloudera/flume/replication/ -f /home/cloudera/flume/replication/replication-flume.conf -Dflume.root.logger=DEBUG,console -n agent

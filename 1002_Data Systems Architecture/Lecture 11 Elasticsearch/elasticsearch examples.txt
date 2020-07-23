@@ -1,0 +1,71 @@
+
+--Create an index in Elasticsearch
+
+PUT http://35.223.153.232:9200/employees_idx 
+{
+	"settings" : {
+		"number_of_shards" : 3,
+		"number_of_replicas" : 1
+	}
+}
+
+--To get information about an index
+
+GET http://35.223.153.232:9200/employees_idx
+
+
+--Add employee to index with id 1
+
+POST http://35.223.153.232:9200/employees_idx/employee/1
+
+{
+	"name": "Tom",
+	"age": 26,
+	"department": "IT",
+	"address": {
+		"street": "No.123, XYZ street",
+		"city": "Toronto",
+		"country": "Canada"
+	}
+}
+--To fetch document with id 1
+
+GET http://35.223.153.232:9200/employees_idx/employee/1
+
+--Add employee to index with id 2
+
+POST http://35.223.153.232:9200/employees_idx/employee/2
+
+{
+	"name": "Jorge",
+	"age": 52,
+	"department": "Design"
+}
+
+--Add employee to index with id 3
+
+POST http://35.223.153.232:9200/employees_idx/employee/3
+
+{
+	"name": "Hanna",
+	"age": 37,
+	"department": "Marketing",
+	"address": {
+		"street": "249 King Edward Street",
+		"city": "Ottawa",
+		"country": "Canada"
+	}
+}
+
+
+-- Search all documents
+
+GET http://35.223.153.232:9200/employees_idx/employee/_search
+
+--Search documents by name
+
+GET http://35.223.153.232:9200/employees_idx/employee/_search?q=name:Hanna
+
+--Delete an index
+
+DELETE http://35.223.153.232:9200/employees_idx
