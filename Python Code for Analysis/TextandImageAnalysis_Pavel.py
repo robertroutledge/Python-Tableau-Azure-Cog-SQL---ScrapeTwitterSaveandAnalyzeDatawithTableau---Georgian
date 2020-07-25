@@ -147,7 +147,7 @@ import urllib
 home_folder = os.getcwd()
 os.chdir(".\\TrumpImageLibrary")
 trump_tag = trainer.create_tag(project.id, "Trump")
-training_image_url = 
+training_image_url =
 x = 0
 for link in prediction_images:
     x = x + 1
