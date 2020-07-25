@@ -55,12 +55,10 @@ def get_db_data():
     query= 'SELECT images, text FROM data_mining.twitter_w_images WHERE text like "%Donald Trump%" or text like "%Trump%" or text like "@donaldjtrump%"'
     print(query)
     df = pd.read_sql_query(text(query),con=db_connection)
-    #tweets = df['text'].tolist()
-
     return df
 
 #runs Azure cognitive analysis on tweets
-def scoresource(alltweets):
+def scoresource(alltweets,images):
     #These lists are needed to get the results of the sentiment analysis
     positive_score = []
     neutral_score = []
@@ -75,8 +73,8 @@ def scoresource(alltweets):
         neutral_score.append(scores.confidence_scores.neutral)
         negative_score.append(scores.confidence_scores.negative)
         keyphrases.append(phrases.key_phrases)
-    tuples = list(zip(positive_score,neutral_score,negative_score,keyphrases))
-    results_df = pd.DataFrame(tuples,columns=['Positive','Neutral','Negative','Key_Phrases'])
+    tuples = list(zip(alltweets,positive_score,neutral_score,negative_score,keyphrases,images))
+    results_df = pd.DataFrame(tuples,columns=['tweet_text','Positive','Neutral','Negative','Key_Phrases','images'])
     return results_df
 
 # cleans the tweets of punctuation
@@ -97,11 +95,13 @@ def cleankeyphrases(df):
 #creates the tweets dataframe
 tweet_df = get_db_data()
 tweet_text = tweet_df['text'].tolist()
+image_urls = tweet_df['images'].tolist()
 client = authenticate_text_client()
-tweet_scores_df = scoresource(tweet_text)
+tweet_df = scoresource(tweet_text,image_urls)
+
 
 #create the string for wordcloud and generate word clouds
-tweets_wordlcoud_string =cleankeyphrases(tweet_scores_df)
+tweets_wordlcoud_string =cleankeyphrases(tweet_df)
 stopwords = set(STOPWORDS)
 stopwords.update(["€™", "©"])
 # wordcloud_tweets = WordCloud(width = 800, height = 800,
@@ -119,7 +119,7 @@ stopwords.update(["€™", "©"])
 # # Overall statistics for the pie
 # # Pie chart, where the slices will be ordered and plotted counter-clockwise:
 # labels = 'Positive', 'Neutral', 'Negative'
-# sizes = [tweet_scores_df['Positive'].mean(), tweet_scores_df['Neutral'].mean(), tweet_scores_df['Negative'].mean()]
+# sizes = [tweet_df['Positive'].mean(), tweet_df['Neutral'].mean(), tweet_df['Negative'].mean()]
 # explode = (0.1, 0.1, 0.1)
 # colors = ['lightgreen', 'orange', 'orangered']
 # fig1, ax1 = plt.subplots()
@@ -133,26 +133,38 @@ training_key = "08acd5cf3c8948829673c53d930d2f50"
 prediction_key = "dfe4b7746ad74c1f98b130d7bfc5048a"
 credentials = ApiKeyCredentials(in_headers={"Training-key": training_key})
 trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
-#I think we can just identify whether Trump is in an image or not
+
+
 #constants for the prediction model and tags
 project = trainer.create_project("TrumpAnalytics")
 prediction_resource_id = "/subscriptions/31dad0b5-b624-4e49-815e-51e72ad9f6e4/resourceGroups/GeorgianCollege/providers/Microsoft.CognitiveServices/accounts/DataMiningAsgFour-Prediction"
 publish_iteration_name = "classifyModel"
 image_list = []
-#we might need face api
-#https://docs.microsoft.com/en-us/azure/cognitive-services/Face/Quickstarts/client-libraries?pivots=programming-language-python#display-and-frame-faces
 
+import os
+import urllib
 
+home_folder = os.getcwd()
+os.chdir(".\\TrumpImageLibrary")
 trump_tag = trainer.create_tag(project.id, "Trump")
-training_image_base_loc = r"C:\Users\rober\OneDrive - Georgian College\DataMiningFinalAssignment\Python Code for Analysis\TrumpImageLibrary"
+training_image_url = 
+x = 0
+for link in prediction_images:
+    x = x + 1
+    name = "image{}.jpg".format(x)
+    try:
+        training_resource = urllib.request.urlopen(link)
+    except:
+        print("one of the file doesn't exists")
+    output = open(name, "wb")
+    output.write(resource.read())
+    output.close()
 
 #iterate over the images
 #change list to 17 when done
-for image_num in range(1, 2):
-#replace hemlock_ with our image library
-    file_name = r"\image{}.jpg".format(image_num)
-#replace this line with our image library
-    with open(training_image_base_loc + file_name, "rb") as image_contents:
+for image_num in range(1, 17):
+    file_name = ".\\image{}.jpg".format(image_num)
+    with open(file_name, "rb") as image_contents:
         image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[trump_tag.id]))
 upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
 if not upload_result.is_batch_successful:
@@ -160,6 +172,8 @@ if not upload_result.is_batch_successful:
     for image in upload_result.images:
         print("Image status: ", image.status)
     exit(-1)
+#return to home folder
+os.chdir(home_folder)
 
 iteration = trainer.train_project(project.id)
 while iteration.status != "Completed":
@@ -170,27 +184,68 @@ while iteration.status != "Completed":
 # The iteration is now trained. Publish it to the project endpoint
 trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, prediction_resource_id)
 
+import urllib
+# Firstly create a folder for the image which we need to predict
+if not os.path.exists('Folder_for_predictions'):
+    os.makedirs('Folder_for_predictions')
+
+# moving to this folder (will back to root later)
+os.chdir(".\\Folder_for_predictions")
+
+# Then we download all pictures from prediction_images to this folder:
 prediction_images = tweet_df['images']
-prediction_image_list =[]
+
+x = 0
+for link in prediction_images:
+    x = x + 1
+    name = "image{}.jpg".format(x)
+    try:
+        resource = urllib.request.urlopen(link)
+    except:
+        print("one of the file doesn't exists")
+    output = open(name, "wb")
+    output.write(resource.read())
+    output.close()
+
+# back to the root folder
+os.chdir(home_folder)
 results_list = []
 
+# prepare information for the predict model
+path_for_count_files = home_folder + "\\Folder_for_predictions\\"
+prediction_images_count = os.listdir(path_for_count_files)
+
+# Finally, predict the images
 prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
 predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
-for image_num in range(1, len(image_list)):
-    image_url = image_list[image_num]
-    name = "tweet{}".format(image_num)
-    with open(image_url,"rb") as image_contents:
-        prediction_image_list.append(ImageFileCreateEntry(name=name, contents=image_contents.read()))
-        results = predictor.classify_image(project.id, publish_iteration_name, image_contents.read())
-        results_list.append(results)
-# image_contents2 = prediction_image_list[0]
 
+for image in prediction_images_count:
 
+    image_url = path_for_count_files + image
 
-# Display the results.
-for prediction in results.predictions:
-    print("\t" + prediction.tag_name +
-          ": {0:.2f}%".format(prediction.probability * 100))
+    try:
+        with open(image_url, "rb") as image_contents:
+            results = predictor.classify_image(project.id, publish_iteration_name, image_contents.read())
+
+            # Display the results.
+            for prediction in results.predictions:
+                x = "\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100)
+
+                # Take a score for tweet_df
+                y = "{0:.2f}%".format(prediction.probability * 100)
+                results_list.append(y)
+
+                print(x)
+
+    except:
+        results_list.append(0) # Otherwise it will be more difficult to match score and tweet
+        print("one of the file isn't image or image is difficult to predict")
+
+print("the algorithm is finished")
+
+# append score result to tweet_df
+#at this point
+tweet_df['Score'] = results_list
 
 #unpublish and delete the project to stay under the Azure limit
 #credentials:
