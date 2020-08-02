@@ -204,9 +204,5 @@ engine = create_engine('mysql+mysqlconnector://admin:bdat1007@rssnews-db.cmhk8qn
 conn = engine.connect()
 tweet_df.to_sql('analyzeddata',con=conn)
 
-#unpublish and delete the project to stay under the Azure limit
-#https://www.customvision.ai/projects
-#credentials:
-##username = stupidgeorgian@hotmail.com
-##password = Essc1234
+
 

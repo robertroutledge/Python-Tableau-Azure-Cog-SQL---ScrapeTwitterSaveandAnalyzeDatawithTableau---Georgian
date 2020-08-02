@@ -1,0 +1,917 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20202.20.0716.1026                               -->
+<workbook original-version='18.1' source-build='2020.2.0 (20202.20.0716.1026)' version='18.1' xml:base='http://localhost:9100' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <repository-location derived-from='http://localhost:9100/t/brunoandradepintosimoesatmygeorgianca/workbooks/Final_Project?rev=1.6' id='Final_Project' path='/t/brunoandradepintosimoesatmygeorgianca/workbooks' revision='1.7' site='brunoandradepintosimoesatmygeorgianca' />
+  <preferences />
+  <datasources>
+    <datasource caption='TextandImageAnalyzed (data_mining)' inline='true' name='federated.0tq1yn00bff7o21dgtyny0bh070t' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='rssnews-db.cmhk8qnm6hfj.us-east-2.rds.amazonaws.com' name='mysql.04aonxz1q7fole15szhbn0akm250'>
+            <connection authentication='' class='mysql' dbname='data_mining' odbc-native-protocol='' one-time-sql='' port='3306' server='rssnews-db.cmhk8qnm6hfj.us-east-2.rds.amazonaws.com' source-charset='' username='admin' workgroup-auth-mode='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='mysql.04aonxz1q7fole15szhbn0akm250' name='TextandImageAnalyzed' table='[TextandImageAnalyzed]' type='table' />
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='mysql.04aonxz1q7fole15szhbn0akm250' name='TextandImageAnalyzed' table='[TextandImageAnalyzed]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>index</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[index]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>index</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unnamed: 0</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Unnamed: 0]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>Unnamed: 0</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tweet_text</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[tweet_text]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>tweet_text</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16383</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Positive</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Positive]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>Positive</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Neutral</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Neutral]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>Neutral</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Negative</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Negative]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>Negative</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Key_Phrases</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Key_Phrases]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>Key_Phrases</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16383</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>images</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[images]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>images</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16383</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PercentageLikelihoodTrumpInImage</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[PercentageLikelihoodTrumpInImage]</local-name>
+            <parent-name>[TextandImageAnalyzed]</parent-name>
+            <remote-alias>PercentageLikelihoodTrumpInImage</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16383</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Key Phrases' datatype='string' name='[Key_Phrases]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Percentage Likelihood Trump In Image (group)]' role='dimension' type='nominal'>
+        <calculation class='categorical-bin' column='[PercentageLikelihoodTrumpInImage]' new-bin='true'>
+          <bin default-name='false' value='&quot;0\% to 20\%&quot;'>
+            <value>&quot;0.00\%&quot;</value>
+            <value>&quot;0.01\%&quot;</value>
+            <value>&quot;0.03\%&quot;</value>
+            <value>&quot;0.07\%&quot;</value>
+            <value>&quot;0.09\%&quot;</value>
+            <value>&quot;0.11\%&quot;</value>
+            <value>&quot;0.84\%&quot;</value>
+            <value>&quot;2.52\%&quot;</value>
+            <value>&quot;7.84\%&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;26\% to 50\%&quot;'>
+            <value>&quot;38.96\%&quot;</value>
+            <value>&quot;39.08\%&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;51\% to 75\%&quot;'>
+            <value>&quot;71.58\%&quot;</value>
+            <value>&quot;77.30\%&quot;</value>
+            <value>&quot;77.39\%&quot;</value>
+            <value>&quot;79.77\%&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;76\% to 100\%&quot;'>
+            <value>&quot;100.00\%&quot;</value>
+            <value>&quot;82.74\%&quot;</value>
+            <value>&quot;94.63\%&quot;</value>
+            <value>&quot;97.70\%&quot;</value>
+            <value>&quot;98.21\%&quot;</value>
+            <value>&quot;99.57\%&quot;</value>
+            <value>&quot;99.58\%&quot;</value>
+            <value>&quot;99.62\%&quot;</value>
+            <value>&quot;99.77\%&quot;</value>
+            <value>&quot;99.85\%&quot;</value>
+            <value>&quot;99.95\%&quot;</value>
+          </bin>
+          <bin default-name='true' value='&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;'>
+            <value>&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;</value>
+          </bin>
+        </calculation>
+      </column>
+      <column caption='Percentage Likelihood Trump In Image' datatype='string' name='[PercentageLikelihoodTrumpInImage]' role='dimension' type='nominal' />
+      <_.fcp.ObjectModelTableType.true...column caption='TextandImageAnalyzed' datatype='table' name='[__tableau_internal_object_id__].[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]' role='measure' type='quantitative' />
+      <column caption='Images' datatype='string' name='[images]' role='dimension' type='nominal' />
+      <column caption='Index' datatype='integer' name='[index]' role='measure' type='quantitative' />
+      <column caption='Tweet Text' datatype='string' name='[tweet_text]' role='dimension' type='nominal' />
+      <column-instance column='[PercentageLikelihoodTrumpInImage]' derivation='None' name='[none:PercentageLikelihoodTrumpInImage:nk]' pivot='key' type='nominal' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:PercentageLikelihoodTrumpInImage:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;39.08\%&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;0.01\%&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;99.62\%&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;0.11\%&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;77.39\%&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;7.84\%&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;0.84\%&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;100.00\%&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;99.57\%&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;0.03\%&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;99.77\%&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;97.70\%&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;0.00\%&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;2.52\%&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;79.77\%&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;82.74\%&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;98.21\%&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;99.58\%&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;71.58\%&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;38.96\%&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;0.07\%&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;99.85\%&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;94.63\%&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;77.30\%&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;0.09\%&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;99.95\%&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='TextandImageAnalyzed' id='TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB'>
+            <properties context=''>
+              <relation connection='mysql.04aonxz1q7fole15szhbn0akm250' name='TextandImageAnalyzed' table='[TextandImageAnalyzed]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption='Highlight 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 1' type='sheet' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Percentage Likelihood Trump In Image (group)' />
+        <param name='target' value='Dashboard 1' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Bar Chart'>
+      <repository-location id='BarChart' path='/t/brunoandradepintosimoesatmygeorgianca/workbooks/Final_Project' revision='' site='brunoandradepintosimoesatmygeorgianca' />
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Bar Chart of Trumo Likelehood Images Groups</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='TextandImageAnalyzed (data_mining)' name='federated.0tq1yn00bff7o21dgtyny0bh070t' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0tq1yn00bff7o21dgtyny0bh070t'>
+            <column datatype='string' name='[Percentage Likelihood Trump In Image (group)]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[PercentageLikelihoodTrumpInImage]' new-bin='true'>
+                <bin default-name='false' value='&quot;0\% to 20\%&quot;'>
+                  <value>&quot;0.00\%&quot;</value>
+                  <value>&quot;0.01\%&quot;</value>
+                  <value>&quot;0.03\%&quot;</value>
+                  <value>&quot;0.07\%&quot;</value>
+                  <value>&quot;0.09\%&quot;</value>
+                  <value>&quot;0.11\%&quot;</value>
+                  <value>&quot;0.84\%&quot;</value>
+                  <value>&quot;2.52\%&quot;</value>
+                  <value>&quot;7.84\%&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;26\% to 50\%&quot;'>
+                  <value>&quot;38.96\%&quot;</value>
+                  <value>&quot;39.08\%&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;51\% to 75\%&quot;'>
+                  <value>&quot;71.58\%&quot;</value>
+                  <value>&quot;77.30\%&quot;</value>
+                  <value>&quot;77.39\%&quot;</value>
+                  <value>&quot;79.77\%&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;76\% to 100\%&quot;'>
+                  <value>&quot;100.00\%&quot;</value>
+                  <value>&quot;82.74\%&quot;</value>
+                  <value>&quot;94.63\%&quot;</value>
+                  <value>&quot;97.70\%&quot;</value>
+                  <value>&quot;98.21\%&quot;</value>
+                  <value>&quot;99.57\%&quot;</value>
+                  <value>&quot;99.58\%&quot;</value>
+                  <value>&quot;99.62\%&quot;</value>
+                  <value>&quot;99.77\%&quot;</value>
+                  <value>&quot;99.85\%&quot;</value>
+                  <value>&quot;99.95\%&quot;</value>
+                </bin>
+                <bin default-name='true' value='&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;'>
+                  <value>&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <_.fcp.ObjectModelTableType.false...column caption='TextandImageAnalyzed' datatype='integer' name='[__tableau_internal_object_id__].[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]' role='measure' type='quantitative' />
+            <column caption='Percentage Likelihood Trump In Image' datatype='string' name='[PercentageLikelihoodTrumpInImage]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.true...column caption='TextandImageAnalyzed' datatype='table' name='[__tableau_internal_object_id__].[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PercentageLikelihoodTrumpInImage]' derivation='None' name='[none:PercentageLikelihoodTrumpInImage:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]'>
+            <groupfilter function='level-members' level='[Percentage Likelihood Trump In Image (group)]' />
+          </filter>
+          <slices>
+            <column>[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' />
+              <lod column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:PercentageLikelihoodTrumpInImage:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0tq1yn00bff7o21dgtyny0bh070t].[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]</rows>
+        <cols>[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]</cols>
+      </table>
+      <simple-id uuid='{EFB6A846-7A2A-4734-AD9B-F9B2A54022DF}' />
+    </worksheet>
+    <worksheet name='PieChart'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Pie Chart of Image Groups</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <repository-location derived-from='http://localhost:9100/t/brunoandradepintosimoesatmygeorgianca/workbooks/Final_Project/PirChart_1?rev=' id='PirChart_1' path='/t/brunoandradepintosimoesatmygeorgianca/workbooks/Final_Project' revision='' site='brunoandradepintosimoesatmygeorgianca' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='TextandImageAnalyzed (data_mining)' name='federated.0tq1yn00bff7o21dgtyny0bh070t' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0tq1yn00bff7o21dgtyny0bh070t'>
+            <column datatype='string' name='[Percentage Likelihood Trump In Image (group)]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[PercentageLikelihoodTrumpInImage]' new-bin='true'>
+                <bin default-name='false' value='&quot;0\% to 20\%&quot;'>
+                  <value>&quot;0.00\%&quot;</value>
+                  <value>&quot;0.01\%&quot;</value>
+                  <value>&quot;0.03\%&quot;</value>
+                  <value>&quot;0.07\%&quot;</value>
+                  <value>&quot;0.09\%&quot;</value>
+                  <value>&quot;0.11\%&quot;</value>
+                  <value>&quot;0.84\%&quot;</value>
+                  <value>&quot;2.52\%&quot;</value>
+                  <value>&quot;7.84\%&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;26\% to 50\%&quot;'>
+                  <value>&quot;38.96\%&quot;</value>
+                  <value>&quot;39.08\%&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;51\% to 75\%&quot;'>
+                  <value>&quot;71.58\%&quot;</value>
+                  <value>&quot;77.30\%&quot;</value>
+                  <value>&quot;77.39\%&quot;</value>
+                  <value>&quot;79.77\%&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;76\% to 100\%&quot;'>
+                  <value>&quot;100.00\%&quot;</value>
+                  <value>&quot;82.74\%&quot;</value>
+                  <value>&quot;94.63\%&quot;</value>
+                  <value>&quot;97.70\%&quot;</value>
+                  <value>&quot;98.21\%&quot;</value>
+                  <value>&quot;99.57\%&quot;</value>
+                  <value>&quot;99.58\%&quot;</value>
+                  <value>&quot;99.62\%&quot;</value>
+                  <value>&quot;99.77\%&quot;</value>
+                  <value>&quot;99.85\%&quot;</value>
+                  <value>&quot;99.95\%&quot;</value>
+                </bin>
+                <bin default-name='true' value='&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;'>
+                  <value>&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='Percentage Likelihood Trump In Image' datatype='string' name='[PercentageLikelihoodTrumpInImage]' role='dimension' type='nominal' />
+            <column-instance column='[PercentageLikelihoodTrumpInImage]' derivation='None' name='[none:PercentageLikelihoodTrumpInImage:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]'>
+            <groupfilter function='level-members' level='[Percentage Likelihood Trump In Image (group)]' />
+          </filter>
+          <slices>
+            <column>[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <encodings>
+              <color column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' />
+              <text column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' />
+              <lod column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:PercentageLikelihoodTrumpInImage:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{D1C1653D-56F2-48BD-9EEF-783BA7516A6F}' />
+    </worksheet>
+    <worksheet name='TreeMap'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Treemap of Likelehood of Trump Images</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <repository-location derived-from='http://localhost:9100/t/brunoandradepintosimoesatmygeorgianca/workbooks/Final_Project/TreeMap?rev=' id='TreeMap' path='/t/brunoandradepintosimoesatmygeorgianca/workbooks/Final_Project' revision='' site='brunoandradepintosimoesatmygeorgianca' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='TextandImageAnalyzed (data_mining)' name='federated.0tq1yn00bff7o21dgtyny0bh070t' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0tq1yn00bff7o21dgtyny0bh070t'>
+            <_.fcp.ObjectModelTableType.false...column caption='TextandImageAnalyzed' datatype='integer' name='[__tableau_internal_object_id__].[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]' role='measure' type='quantitative' />
+            <column caption='Percentage Likelihood Trump In Image' datatype='string' name='[PercentageLikelihoodTrumpInImage]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.true...column caption='TextandImageAnalyzed' datatype='table' name='[__tableau_internal_object_id__].[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PercentageLikelihoodTrumpInImage]' derivation='None' name='[none:PercentageLikelihoodTrumpInImage:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <computed-sort column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:PercentageLikelihoodTrumpInImage:nk]' direction='ASC' using='[federated.0tq1yn00bff7o21dgtyny0bh070t].[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]' />
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0tq1yn00bff7o21dgtyny0bh070t].[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]' palette='green_gold_10_0' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]' />
+              <color column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]' />
+              <text column='[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:PercentageLikelihoodTrumpInImage:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{000F2D3B-8269-434B-951F-DC0C2DD28BFD}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <repository-location derived-from='http://localhost:9100/t/brunoandradepintosimoesatmygeorgianca/workbooks/Final_Project/Dashboard1?rev=' id='Dashboard1' path='/t/brunoandradepintosimoesatmygeorgianca/workbooks/Final_Project' revision='' site='brunoandradepintosimoesatmygeorgianca' />
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='TextandImageAnalyzed (data_mining)' name='federated.0tq1yn00bff7o21dgtyny0bh070t' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0tq1yn00bff7o21dgtyny0bh070t'>
+        <column datatype='string' name='[Percentage Likelihood Trump In Image (group)]' role='dimension' type='nominal'>
+          <calculation class='categorical-bin' column='[PercentageLikelihoodTrumpInImage]' new-bin='true'>
+            <bin default-name='false' value='&quot;0\% to 20\%&quot;'>
+              <value>&quot;0.00\%&quot;</value>
+              <value>&quot;0.01\%&quot;</value>
+              <value>&quot;0.03\%&quot;</value>
+              <value>&quot;0.07\%&quot;</value>
+              <value>&quot;0.09\%&quot;</value>
+              <value>&quot;0.11\%&quot;</value>
+              <value>&quot;0.84\%&quot;</value>
+              <value>&quot;2.52\%&quot;</value>
+              <value>&quot;7.84\%&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;26\% to 50\%&quot;'>
+              <value>&quot;38.96\%&quot;</value>
+              <value>&quot;39.08\%&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;51\% to 75\%&quot;'>
+              <value>&quot;71.58\%&quot;</value>
+              <value>&quot;77.30\%&quot;</value>
+              <value>&quot;77.39\%&quot;</value>
+              <value>&quot;79.77\%&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;76\% to 100\%&quot;'>
+              <value>&quot;100.00\%&quot;</value>
+              <value>&quot;82.74\%&quot;</value>
+              <value>&quot;94.63\%&quot;</value>
+              <value>&quot;97.70\%&quot;</value>
+              <value>&quot;98.21\%&quot;</value>
+              <value>&quot;99.57\%&quot;</value>
+              <value>&quot;99.58\%&quot;</value>
+              <value>&quot;99.62\%&quot;</value>
+              <value>&quot;99.77\%&quot;</value>
+              <value>&quot;99.85\%&quot;</value>
+              <value>&quot;99.95\%&quot;</value>
+            </bin>
+            <bin default-name='true' value='&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;'>
+              <value>&quot;image doesn&apos;t exist or couldn&apos;t predict&quot;</value>
+            </bin>
+          </calculation>
+        </column>
+        <column caption='Percentage Likelihood Trump In Image' datatype='string' name='[PercentageLikelihoodTrumpInImage]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='27' param='horz' w='98400' x='800' y='1000'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='7' param='horz' w='82400' x='800' y='1000'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='98000' id='5' w='82400' x='800' y='1000'>
+                <zone h='49000' id='11' name='TreeMap' w='82400' x='800' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='39626' id='17' name='PieChart' w='41200' x='800' y='10374'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='9374' id='18' name='PieChart' pane-specification-id='0' param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' w='82400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='39626' id='25' name='Bar Chart' w='41200' x='42000' y='10374'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='160' h='98000' id='26' is-fixed='true' param='vert' w='16000' x='83200' y='1000'>
+              <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' h='19125' id='28' mode='checklist' name='Bar Chart' param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' values='database' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1000' minheight='1000' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='30' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='29' param='vert' w='98400' x='800' y='1000'>
+                <zone fixed-size='280' h='39626' id='17' is-fixed='true' name='PieChart' w='41200' x='800' y='10374'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='9374' id='18' name='PieChart' pane-specification-id='0' param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' w='82400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' h='19125' id='28' mode='checkdropdown' name='Bar Chart' param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' values='database' w='16000' x='83200' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='39626' id='25' is-fixed='true' name='Bar Chart' w='41200' x='42000' y='10374'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='11' is-fixed='true' name='TreeMap' w='82400' x='800' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{C60FD31C-380A-4EAD-A659-745674E824EC}' />
+    </dashboard>
+  </dashboards>
+  <windows>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Bar Chart'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='PieChart'>
+          <zoom type='entire-view' />
+          <highlight field='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]'>
+            <bucket-selection />
+          </highlight>
+        </viewpoint>
+        <viewpoint name='TreeMap'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='25' />
+      <simple-id uuid='{08EB399E-2D53-4538-8D23-088061225425}' />
+    </window>
+    <window class='worksheet' name='TreeMap'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]' type='size' />
+            <card param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[__tableau_internal_object_id__].[cnt:TextandImageAnalyzed_BDCF059F6F6A4067BD8284A72884D8BB:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[:Measure Names]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:PercentageLikelihoodTrumpInImage:nk]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:images:nk]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:tweet_text:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{31E553EB-9270-46FE-B4D7-DE1501FEECF4}' />
+    </window>
+    <window class='worksheet' name='PieChart'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' type='color' />
+            <card mode='checklist' param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' type='filter' values='database' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[:Measure Names]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:Key_Phrases:nk]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:PercentageLikelihoodTrumpInImage:nk]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:images:nk]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:tweet_text:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{2C4A88E3-428E-47AE-A2C1-E7C86F599576}' />
+    </window>
+    <window class='worksheet' name='Bar Chart'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='checklist' param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' type='filter' values='database' />
+            <card param='[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[:Measure Names]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[Percentage Likelihood Trump In Image (group)]</field>
+            <field>[federated.0tq1yn00bff7o21dgtyny0bh070t].[none:PercentageLikelihoodTrumpInImage:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{C7695B27-97A1-4D0A-A4FB-7F682ECB942A}' />
+    </window>
+  </windows>
+</workbook>
