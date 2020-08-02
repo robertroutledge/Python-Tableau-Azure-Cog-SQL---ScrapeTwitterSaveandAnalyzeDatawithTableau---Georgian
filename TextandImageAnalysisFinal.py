@@ -122,7 +122,7 @@ image_list = []
 #First we train our model to predict if Trump is in an image
 
 #collecting and counting the number of training images
-training_image_url = r"https://github.com/robertroutledge/DataMiningFinalAssignment/tree/master/Documentation%20and%20Archive/Python%20Code%20for%20Analysis/TrumpImageLibrary"
+training_image_url = r"https://github.com/robertroutledge/DataMiningFinalAssignment/raw/master/DocumentationandArchive/TrumpImageLibrary/"
 page = requests.get(training_image_url)
 soup = BeautifulSoup(page.text,'html.parser')
 soupstring = str(soup)
